@@ -50,13 +50,15 @@ $file1->fileArr['tmp_name'] = $app->fileArr['tmp_name'];
 class Request {
 private $get;
 private $post;
-private $files;
-public $url;
-public function __construct(Get $receiving, Post $sending, Files $programs) {
+private $server;
+public function __construct(Get $receiving, Post $sending, Server $webserver) {
 $this->get = $receiving;
 $this->post = $sending;
-$this->files = $programs;
+$this->server = $webserver;
 }
+public function getGet() { return $this->get; }
+public function getPost() { return $this->post; }
+public function getServ() { return $this->server; }
 }
 var_dump($file1->fileArr);
 var_dump($file2->fileArr);
@@ -64,4 +66,5 @@ var_dump($file3->fileArr);
 var_dump($file1->globArr);
 var_dump($keys);
 echo $file1->fileArr['tmp_name'].PHP_EOL;
+class Server { public function __construct() { } }
 ?>
