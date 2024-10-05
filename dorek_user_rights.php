@@ -1,4 +1,5 @@
 <?php
+include 'global_arrays.php';
 function upload() {
 $uplArr = array(
 'DBAdapter' => 'adapter/DBAdapter.php',
@@ -11,9 +12,9 @@ return $uplArr;
 class Autoload { public static function registrate() { return upload(); } }
 class Main {
 public static function init() {
-var_dump(include 'global_arrays.php');
-var_dump(Autoload::registrate());
+$request = new Request(new Get('a', 'b', 'c'), new Post(), new Server());
+return $request;
 }
 }
-Main::init();
+var_dump(Main::init());
 ?>
